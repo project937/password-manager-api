@@ -11,8 +11,12 @@ app.use(bodyParser.json());
 
 // ------- Database Connection -------
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
+
 
 const JWT_SECRET = process.env.JWT_SECRET || 'default_secret';
 
